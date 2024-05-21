@@ -1,7 +1,10 @@
+
 import { createContext, useEffect, useState } from "react";
 
 
-const Context = createContext(null);
+// const Context = createContext(null);
+export const Context = createContext(null);
+
 
 const ProductContext = ({ children }) => {
 

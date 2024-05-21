@@ -3,44 +3,80 @@ import { Pressable, Text, View } from "react-native";
 import { StyleSheet } from 'react-native';
 
 
-
-export default function ProductListItem(title, onPress, bgColor) {
-
+export default function ProductListItem({ title, onPress, bgColor }) {
     return (
-        <View style={styles.productItemOuterContainer}>
-            <Pressable style={{...styles.pressableView, backgroundColor:bgColor}}>
-                <View style={styles.productItemOuterContainer}>
-                    <Text style={styles.title} />
-                    {title}
-                </View>
-            </Pressable>
-        </View>
-    )
-}
-
-const styles = StyleSheet.create()({
+      <View style={styles.productItemOuterContainer}>
+        <Pressable onPress={onPress} style={{ ...styles.pressableView, backgroundColor: bgColor }}>
+          <View style={styles.productItemInnerContainer}>
+            <Text style={styles.title}>{title}</Text>
+          </View>
+        </Pressable>
+      </View>
+    );
+  }
+  
+  const styles = StyleSheet.create({
     productItemOuterContainer: {
-        flex: 1,
-        margin: 16,
-        height: 160,
-        borderRadius: 8
-
+      flex: 1,
+      margin: 16,
+      height: 160,
+      borderRadius: 8,
     },
     pressableView: {
-        flex: 1,
-
+      flex: 1,
     },
     productItemInnerContainer: {
-        flex: 1,
-        padding: 15,
-        justifyContent: 'center',
-        alignItems: 'center',
+      flex: 1,
+      padding: 15,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     title: {
-        fontweight: 'bold',
-        fontSize: 20,
-        color: '#000000',
+      fontWeight: 'bold', 
+      fontSize: 20,
+      color: '#000000',
+    },
+  });
+  
 
-    }
 
-})
+// export default function ProductListItem(title, onPress, bgColor) {
+
+//     return (
+//         <View style={styles.productItemOuterContainer}>
+//             <Pressable style={{...styles.pressableView, backgroundColor:bgColor}}>
+//                 <View style={styles.productItemOuterContainer}>
+//                     <Text style={styles.title} />
+//                     {title}
+//                 </View>
+//             </Pressable>
+//         </View>
+//     )
+// }
+
+// const styles = StyleSheet.create({
+//     productItemOuterContainer: {
+//         flex: 1,
+//         margin: 16,
+//         height: 160,
+//         borderRadius: 8
+
+//     },
+//     pressableView: {
+//         flex: 1,
+
+//     },
+//     productItemInnerContainer: {
+//         flex: 1,
+//         padding: 15,
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//     },
+//     title: {
+//         fontweight: 'bold',
+//         fontSize: 20,
+//         color: '#000000',
+
+//     }
+
+// })
