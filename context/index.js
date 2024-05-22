@@ -2,8 +2,8 @@
 import { createContext, useEffect, useState } from "react";
 
 
-// const Context = createContext(null);
-export const Context = createContext(null);
+const Context = createContext(null);
+// export const Context = createContext(null);
 
 
 const ProductContext = ({ children }) => {
@@ -21,13 +21,15 @@ const ProductContext = ({ children }) => {
             const apires = await fetch('https://dummyjson.com/products');
             const finalresult = await apires.json()
             if (finalresult){
-                // setTimeout(()=>{
-                //     setloading(false);
+                setTimeout(()=>{
+                    setloading(false);
 
-                // }, 2000)
+                }, 2000)
 
                 setProducts(finalresult.products)
+                setloading(false);
             }
+           
         }
         getProductsFromApi()
     }, [])

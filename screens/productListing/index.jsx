@@ -1,11 +1,12 @@
 
-import { useContext } from "react";
+// import { useContext } from "react";
+import { useContext } from "react-native";
 import { ActivityIndicator, FlatList, Text, View, StyleSheet } from "react-native";
 
-// import { Context } from "../../context";
-import { Context } from "../../context"; // Assuming the path is correct
-
+``
+import { Context } from "../../context";
 import ProductListItem from "../../components/productListItem";
+import { useNavigation } from "@react-navigation/native";
 
 
 
@@ -26,26 +27,34 @@ function createRandomColor() {
     for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
     }
-    return color; // Added return statement
+    return color; 
 }
 
-
+const navigation= useNavigation()
 
 export default function ProductListing() {
+  
     const { loading, products } = useContext(Context);
   
     if (loading) {
       return <ActivityIndicator style={styles.loader} color={"red"} size={"large"} />;
     }
+
+    const handleOnPress =()=>{
+      navigation.navigate('productDetails')
+
+    }; 
   
     return (
       <View>
         <FlatList
           data={products}
-          renderItem={({ item }) => ( // Destructured item from itemData
-            <ProductListItem title={item.title} bgColor={createRandomColor()} /> // Called function with parentheses
+          renderItem={(itemData) => (
+            <ProductListItem title={itemData.item.title} bgColor={createRandomColor()}
+            onPress ={handleOnPress}
+            /> 
           )}
-          keyExtractor={(item) => item.id.toString()} // Corrected keyExtractor and converted id to string
+          keyExtractor={(itemData) => itemData.id.toString()} 
           numColumns={2}
         />
         <Text>ProductListing</Text>
